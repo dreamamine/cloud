@@ -1,17 +1,16 @@
 pipeline {
   environment {
-    registry = "docker_hub_account/imech"
+    registry = "imech/pfetes"
     registryCredential = 'dockerhub'
+    dockerImage = ''
   }
-  agent
-    {
-        dockerfile
-        {
-            filename 'Dockerfile'
-            args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
-        }
-    }
+  agent any
+       }
   stages {
+   stage('Cloning Git') {
+      steps {
+        git 'https://github.com/dreamamine/cloud.git'
+      }
     stage('Building image') {
       steps{
         script {
@@ -19,5 +18,19 @@ pipeline {
         }
       }
     }
+   stage('Deploy Image') {
+  steps{
+    script {
+      docker.withRegistry( '', registryCredential ) {
+        dockerImage.push()
+      }
+    }
+  }
+}
+stage('Remove Unused docker image') {
+  steps{
+    sh "docker rmi $registry:$BUILD_NUMBER"
+  }
+}
   }
 }
