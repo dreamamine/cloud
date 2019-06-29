@@ -22,18 +22,6 @@ pipeline
                 '''
             }
         }
-        stage('Run script')
-        {
-            steps
-            {
-                script
-                {
-                    writeFile encoding: 'UTF-8',file: './variables.groovy', text: GROOVY_SCRIPT
-                    load './variables.groovy'
-                    
-                    sh "python ./${PYTHON_SCRIPT_FILE}"
-                }
-            }
-        }
+        
     }
 }
