@@ -18,7 +18,8 @@ pipeline
             steps
             {
                 sh '''
-                    docker run
+                dockerFingerprintFrom dockerfile: 'Dockerfile', image: 'php2019'
+                docker build -t "php2019:Dockerfile" .
                 '''
             }
         }
