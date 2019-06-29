@@ -11,6 +11,7 @@ pipeline {
       steps {
         git 'https://github.com/dreamamine/cloud.git'
       }
+      }
     stage('Building image') {
       steps{
         script {
