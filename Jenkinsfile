@@ -18,7 +18,7 @@ pipeline
             steps
             {
                 sh '''
-                    docker build -t imech/php2019:1.0 .
+                    docker run
                 '''
             }
         }
