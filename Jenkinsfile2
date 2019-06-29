@@ -2,8 +2,9 @@ pipeline {
   environment {
     registry = "imech/pfetes"
     registryCredential = 'dockerhub'
+    "credsStore": "osxkeychain"
   
-    dockerImage = ''
+  dockerImage = ''
   }
   agent any
     
