@@ -1,5 +1,8 @@
 
-node (master){
+node {
+	stage('checkout') {
+             git url: 'https://github.com/dreamamine/cloud.git'
+    }
         deff app
 	stage ('Clone repository') {
             checkout scm
