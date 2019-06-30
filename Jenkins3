@@ -21,5 +21,6 @@ node {
 	  
 	   sh "docker run -d --rm -p 80:80 --name imech/phpapp"
      }
+     }
 }
 }
