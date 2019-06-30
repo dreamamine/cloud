@@ -17,7 +17,7 @@ pipeline {
 	stage ('Pushing docker image to registry') {
             steps {
 
-                    sh 'docker push imech/imen'
+                    sh 'docker push imech/amine'
 
             }
         }
