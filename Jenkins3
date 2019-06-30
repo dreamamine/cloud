@@ -1,6 +1,5 @@
 
 node (master){
-import jenkins.model.*
         deff app
 	stage ('Clone repository') {
             checkout scm
