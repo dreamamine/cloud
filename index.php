@@ -3,5 +3,5 @@
   for ($i = 0; $i <= 1000000; $i++) {
     $x += sqrt($x);
   }
-  echo "First script !";
+  echo "Have a nice day !";
 ?>
