@@ -1,28 +1,20 @@
 pipeline {
-    agent any
-    stage ('Building docker image') {
-            steps {
-               
-                    sh 'docker build -t dock .'
-                  }
-        }
-
-	stage ('Again rest') {
-            steps {
-
-                    sh 'sleep 10'
-
+        deff app
+	stage ('Clone repository') {
+            checkout scm
+	    }
+	stage ('Build image') {
+           app = docker.build("imech/phpapp)
+            }
+        stage ('Test image') {
+           app.inside
+               sh 'echo "Tests passed"'
             }
         }
-	stage ('Pushing docker image to registry') {
-            steps {
-
-                    sh 'docker push imech/amine'
-
-            }
-        }
-
-
+	stage ('Push image') {
+	   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
+	   app.push("${env.BUILD_NUMBER}")
+	   app.push("latest")
     }
-
+}
 }
