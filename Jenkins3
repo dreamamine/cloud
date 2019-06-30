@@ -1,7 +1,6 @@
 
 node (master){
 import jenkins.model.*
-jenkins = Jenkins.instance
         deff app
 	stage ('Clone repository') {
             checkout scm
